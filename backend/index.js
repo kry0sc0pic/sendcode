@@ -57,17 +57,8 @@ app.post('/api/sendMail',async (req,res)=>{
     }
 });
 
-app.use('/',express.static('./build'),(req,res)=>{
-    var ip = requestIp.getClientIp(req);
-    console.log(ip+" | GET /");
-    axios.post(process.env.LOG_WEBHOOK,{
-        content: `${ip} | GET /\n${moment().toString()}`
-    });
-    res.sendFile(__dirname+'/build/index.html');
-}
-   
-);
+app.use('/',express.static('./build'));
 
 app.listen(process.env.PORT, () => {
-    console.log(`idwtgmeptms listening on port ${process.env.PORT}|!`);
+    console.log(`idwtgmeptms listening on port ${process.env.PORT}!`);
 });
