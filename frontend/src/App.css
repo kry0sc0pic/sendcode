@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap');
+body {
+    background-color: #062C30;
+    font-family: 'IBM Plex Mono', monospace;
+}
+
+.header {
+    text-align: center;
+    color: #05595B;
+    font-weight: 700;
+    font-size: 42px;
+    padding: 30 30 30 30;
+}
+.input-section {
+    padding-top: 100px;
+    width: max-content;
+    margin: auto;
+}
+.input-section2 {
+    padding-top: 50px;
+    width: max-content;
+    margin: auto;
+}
+
+.input-title{
+    color: #05595B;
+    font-weight: 700;
+    font-size: 30px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.email-input {
+    background-color: #05595B;
+    outline: none;
+    width: 550px;
+    padding: 10px 15px 15px 10px;
+    border-radius: 10px;
+    color: #ffffff;
+    font-weight: 700;
+    
+    
+}
+.code-input {
+    background-color: #05595B !important;
+    outline: none;
+    width: 550px;
+    padding: 10px 30px 10px 30px;
+    border-radius: 10px;
+    color: #ffffff;
+    height: 350px;
+    font-weight: 700;
+    font-size: 18px;
+    overflow-y: scroll !important;
+    
+}
+
+.send-button {
+    color: #05595B;
+    font-weight: 700;
+    font-size: 32px;
+    padding: 10px 120px 10px 120px;
+    outline: 4px #05595B solid;
+    border-radius: 10px;
+    
+}
+
+.send-button:hover{
+    color: #ffffff;
+    background-color: #05595B;
+}
+
+.centered {
+    padding-top: 50px;
+
+    width: max-content;
+    margin: auto}
+
+.toast-body {
+    background-color: #062C30;
+    
+}
