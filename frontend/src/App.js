@@ -53,7 +53,7 @@ function App() {
       toastClassName={'toast-body'}
       />
       <header className="header">
-        idwtgmeptms
+        <a href='https://github.com/krishaayjois21/idwtgmeptms' className='title'>idwtgmeptms</a>
       </header>
       <div className='spacer'/>
       <div className="input-section">

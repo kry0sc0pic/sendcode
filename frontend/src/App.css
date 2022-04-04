@@ -4,6 +4,10 @@ body {
     font-family: 'IBM Plex Mono', monospace;
 }
 
+.title:hover {
+    color: #ffffff;
+}
+
 .header {
     text-align: center;
     color: #05595B;
