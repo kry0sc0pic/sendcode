@@ -68,6 +68,6 @@ app.use('/',express.static('./build'),(req,res)=>{
    
 );
 
-app.listen(80, () => {
-    console.log('idwtgmeptms listening on port 80!');
+app.listen(process.env.PORT, () => {
+    console.log(`idwtgmeptms listening on port ${process.env.PORT}|!`);
 });
