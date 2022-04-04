@@ -2,12 +2,19 @@ import './App.css';
 import CodeEditor from '@uiw/react-textarea-code-editor';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useState } from 'react';
+import { useState , useEffect} from 'react';
 import isEmail from 'validator/lib/isEmail';
 
 const axios = require('axios').default;
 
 function App() {
+  useEffect(() => {
+    // code to run after render goes here
+    toast.info('Your IP Address will be recorded when you send the code',{
+      autoClose: false,
+
+    })
+  },[]);
   let [emailID , setEmailID] = useState('');
   let [code,setCode] = useState();
   
