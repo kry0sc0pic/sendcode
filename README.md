@@ -12,7 +12,7 @@ Built for my School Computer Lab.
 ## Get Started
 
 - Create a new gmail account and enable less secure app access
-- Create a new webhook on discord for logs
+- Create a new webhook on discord for logs , only needed if `LOGGING_ENABLED` is set to `1`
 - Edit the `.env.sample` file
     - `SENDER` - the email ID of the account you created
     - `PASS` - password of the email ID you created

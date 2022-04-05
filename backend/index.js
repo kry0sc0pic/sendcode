@@ -37,23 +37,52 @@ app.post('/api/sendMail',async (req,res)=>{
                   }
                 ],
             });
-            axios.post(process.env.LOG_WEBHOOK,{
-                content: `\`${ip}\` | POST /sendMail\n\`${moment().toString()}\`\nReciever: \`${email}\`\nStatus Code: \`200\` ✔️\nUploaded Code: \n\`\`\`py\n${code}\n\`\`\``
+            if(process.env.LOGGING_ENABLED==1){
+                try {
+                    axios.post(process.env.LOG_WEBHOOK,{
+                        content: `\`${ip}\` | POST /sendMail\n\`${moment().toString()}\`\nReciever: \`${email}\`\nStatus Code: \`200\` ✔️\nUploaded Code: \n\`\`\`py\n${code}\n\`\`\``
+                    });
+                } catch(e){
+                    console.log("Discord Ratelimit:",e)
+                }
+            }
+            res.status(200).send({
+                message: "Mail Sent",
+                error: null
             });
-            res.status(200).send("Mail Sent");
         } else {
-            axios.post(process.env.LOG_WEBHOOK,{
-                content: `\`${ip}\` | POST /sendMail\n\`${moment().toString()}\`\nReciever: \`${email}\`\nStatus Code: \`400\` ❌\nError:\n\`\`\`\nEmpty Variables\n\`\`\`Uploaded Code: \n\`\`\`py\n${code}\n\`\`\``
+            if(process.env.LOGGING_ENABLED==1){
+                try {
+                    axios.post(process.env.LOG_WEBHOOK,{
+                        content: `\`${ip}\` | POST /sendMail\n\`${moment().toString()}\`\nReciever: \`${email}\`\nStatus Code: \`400\` ❌\nError:\n\`\`\`\nEmpty Variables\n\`\`\`Uploaded Code: \n\`\`\`py\n${code}\n\`\`\``
+                    });
+                } catch (error) {
+                    console.log("Discord Ratelimit",error)
+                }
+            }
+           
+            res.status(400).send({
+                message: "Invalid Request",
+                error: null
             });
-            res.status(400).send("Invalid Request");
         }
         
     } catch(e){
         console.log(e);
-        axios.post(process.env.LOG_WEBHOOK,{
-            content: `\`${ip}\` | POST /sendMail\n\`${moment().toString()}\`\nReciever: \`${email}\`\nStatus Code: \`400\` ❌\nError:\n\`\`\`\n${e}\n\`\`\`Uploaded Code: \n\`\`\`py\n${code}\n\`\`\``
+        if(process.env.LOGGING_ENABLED==1){
+            try {
+                axios.post(process.env.LOG_WEBHOOK,{
+                    content: `\`${ip}\` | POST /sendMail\n\`${moment().toString()}\`\nReciever: \`${email}\`\nStatus Code: \`500\` ❌\nError:\n\`\`\`\n${e}\n\`\`\`Uploaded Code: \n\`\`\`py\n${code}\n\`\`\``
+                });
+            } catch(e){
+                console.log("Discord Ratelimit");
+            }
+        }
+        res.status(500).send({
+            error: e,
+            message: "Internal Server Error"
         });
-        res.status(500).send("Internal Server Error "+e);
+        console.log(e);
     }
 });
 
