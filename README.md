@@ -1,4 +1,5 @@
-## IDWTGMEPTMS
+## SendCode
+Previously known as IDWTGMEPTMS (I Don't Want To Give My Email and Password To My School)
 
 Website built with react.js to send code snippets to your email as a file
 
